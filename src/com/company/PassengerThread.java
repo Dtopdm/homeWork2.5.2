@@ -18,12 +18,12 @@ public class PassengerThread extends Thread {
     public synchronized void run() {
         try {
             semaphore.acquire();
-            countDownLatch.countDown();
             System.out.println("Пассажир " + passengerNum + " купил билет");
             sleep(2000);
             System.out.println("Пассажир " + passengerNum + " сел в автобус");
             semaphore.release();
             sleep(1000);
+            countDownLatch.countDown();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
